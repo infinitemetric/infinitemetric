@@ -6,8 +6,8 @@ import { FiPhone, FiArrowRight } from 'react-icons/fi'
 const navLinks = [
   { name: 'Home', href: '#home' },
   { name: 'Services', href: '#services' },
-  { name: 'Infrastructure', href: '#why-us' },
-  { name: 'Protocol', href: '#how-it-works' },
+  { name: 'Why Us', href: '#why-us' },
+  { name: 'How it Works', href: '#how-it-works' },
 ]
 
 export default function Navbar() {
@@ -67,7 +67,7 @@ export default function Navbar() {
             {/* Action Group */}
             <div className="hidden lg:flex items-center gap-8">
               <div className="flex flex-col items-end group">
-                <p className="text-[8px] font-black uppercase tracking-[0.3em] leading-none mb-1 text-white/40">Emergency Dispatch</p>
+                <p className="text-[8px] font-black uppercase tracking-[0.3em] leading-none mb-1 text-white/40">Urgent Support</p>
                 <a 
                   href="tel:+447896656811" 
                   style={{ color: 'white' }}
@@ -129,7 +129,7 @@ export default function Navbar() {
                 <span className="text-xl font-bold tracking-tight">0123 456 7890</span>
               </a>
               <a href="#booking" onClick={() => setMobileOpen(false)} className="w-full py-7 bg-accent text-white flex items-center justify-center gap-4 rounded-[40px] font-black uppercase tracking-widest text-lg shadow-2xl">
-                Start Mission
+                Book Now
               </a>
             </motion.div>
           </motion.div>

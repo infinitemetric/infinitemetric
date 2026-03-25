@@ -83,19 +83,21 @@ export default function WhyChooseUs() {
             viewport={{ once: true }}
             className="inline-block px-3 py-1 glass border border-white/5 rounded-full mb-6"
           >
-            <span className="text-electric text-[9px] sm:text-[10px] font-black tracking-[0.3em] uppercase">Trust Metrics</span>
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="font-heading font-black text-3xl sm:text-4xl lg:text-5xl text-white mb-6 tracking-tighter leading-tight"
-          >
-            Infrastructure of<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal via-electric to-blue-300">
-              Integrity
+            <span className="text-accent font-black text-[9px] uppercase tracking-[0.4em] mb-4 block">
+              Trusted Delivery Partners
             </span>
-          </motion.h2>
+          </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tighter leading-tight"
+            >
+              Why{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal via-electric to-blue-400">
+                Choose Us
+              </span>
+            </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -1,34 +1,24 @@
 import { motion } from 'framer-motion'
-import { FiArrowUpRight, FiZap, FiTruck, FiGlobe, FiPackage } from 'react-icons/fi'
+import { FiArrowUpRight, FiZap, FiTruck, FiGlobe, FiPackage, FiShield } from 'react-icons/fi'
 
 const services = [
   {
-    icon: <FiZap className="text-xl" />,
-    title: 'Same Day Courier',
-    description: 'High-velocity document and parcel delivery across all major UK business hubs within 60-90 minutes of collection.',
-    speed: '60Mins Collection',
-    image: '/services/same-day.png',
+    icon: <FiZap />,
+    title: 'Fast Delivery',
+    subtitle: 'Same-day collection and delivery for urgent items.',
+    color: 'from-accent to-orange-400',
   },
   {
-    icon: <FiTruck className="text-xl" />,
-    title: 'UK Next Day',
-    description: 'Cost-efficient precision distribution for your bulk consignments and retail inventory with end-to-end tracking.',
-    speed: 'Guaranteed 09:00',
-    image: '/services/next-day.png',
+    icon: <FiTruck />,
+    title: 'Versatile Fleet',
+    subtitle: 'From small vans to large trucks for all parcel sizes.',
+    color: 'from-electric to-blue-400',
   },
   {
-    icon: <FiGlobe className="text-xl" />,
-    title: 'International',
-    description: 'Strategic global freight solutions connecting your business to EMEA, Americas, and APAC with seamless customs clearing.',
-    speed: 'Global Reach',
-    image: '/services/international.png',
-  },
-  {
-    icon: <FiPackage className="text-xl" />,
-    title: 'Movers & Packers',
-    description: 'White-glove logistical support for office relocations and residential moves. Specialized handling for fragile equipment.',
-    speed: 'Expert Handling',
-    image: '/services/movers.png',
+    icon: <FiShield />,
+    title: 'Secure Handling',
+    subtitle: 'Fully insured and GPS-tracked for your peace of mind.',
+    color: 'from-royal to-indigo-400',
   },
 ]
 
@@ -44,24 +34,19 @@ export default function Services() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-6 sm:mb-8">
           <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="inline-block px-3 py-1 bg-electric/10 text-electric rounded-lg text-[9px] font-black mb-4 tracking-[0.3em] uppercase border border-electric/20"
-            >
-              Infrastructure
-            </motion.div>
+            <span className="text-accent font-black text-[9px] uppercase tracking-[0.4em] mb-4 block">
+                Professional Delivery Solutions
+            </span>
             <motion.h2
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tighter leading-tight"
             >
-              Specialized Delivery<br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal via-electric to-blue-400">
-                Verticals
-              </span>
+                Reliable{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric via-blue-400 to-blue-200">
+                  Delivery Services
+                </span>
             </motion.h2>
           </div>
           <motion.p
@@ -75,7 +60,7 @@ export default function Services() {
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -86,7 +71,7 @@ export default function Services() {
               className="group relative h-[400px] flex flex-col p-8 rounded-[32px] bg-white/[0.02] border border-white/5 hover:border-electric/40 transition-smooth overflow-hidden shadow-2xl hover:shadow-electric/10"
             >
               {/* Background Accent */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-electric/10 to-transparent rounded-bl-[100px] -mr-4 -mt-4 group-hover:scale-150 transition-transform duration-700" />
+              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${service.color}/10 to-transparent rounded-bl-[100px] -mr-4 -mt-4 group-hover:scale-150 transition-transform duration-700`} />
               
               <div className="relative z-10 h-full flex flex-col">
                 <div className="w-14 h-14 rounded-2xl bg-white/5 shadow-xl flex items-center justify-center text-electric mb-6 group-hover:bg-electric group-hover:text-white transition-all duration-500 border border-white/10">
@@ -94,7 +79,7 @@ export default function Services() {
                 </div>
                 
                 <h3 className="font-heading font-black text-xl text-white mb-4 tracking-tight group-hover:text-electric transition-colors">{service.title}</h3>
-                <p className="text-white/40 text-sm leading-relaxed mb-auto group-hover:text-white/70 transition-colors font-medium">{service.description}</p>
+                <p className="text-white/40 text-sm leading-relaxed mb-auto group-hover:text-white/70 transition-colors font-medium">{service.subtitle}</p>
                 
                 <div className="mt-8 pt-6 border-t border-white/5 flex items-center justify-between">
                   <div>

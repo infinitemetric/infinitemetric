@@ -101,16 +101,16 @@ export default function BookingWidget() {
             <div className="bg-navy/90 backdrop-blur-2xl rounded-[26px] px-5 py-8 sm:px-8 sm:py-8 lg:px-10 lg:py-10">
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-6 sm:mb-8">
                 <div className="text-left">
-                  <span className="text-electric font-black text-[8px] sm:text-[9px] uppercase tracking-[0.3em] mb-1.5 block">Instant Logistics Matrix</span>
+                  <span className="text-electric font-black text-[8px] sm:text-[9px] uppercase tracking-[0.3em] mb-1.5 block">Instant Delivery Calculator</span>
                   <h2 className="font-heading font-black text-xl sm:text-2xl lg:text-3xl text-white tracking-tighter">
-                    Precision{' '}
+                    Get a{' '}
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric via-blue-400 to-blue-200">
-                      Booking
+                      Quote
                     </span>
                   </h2>
                 </div>
                 <p className="text-white/40 text-[8px] sm:text-[9px] max-w-[180px] md:text-right mt-1 md:mt-0 font-bold uppercase tracking-widest leading-normal">
-                  Secure your mission parameters for immediate collection.
+                  Enter delivery details for an instant price.
                 </p>
               </div>
 
@@ -142,18 +142,18 @@ export default function BookingWidget() {
                     { label: 'Delivery', field: 'delivery', icon: <FiMapPin className="text-accent" />, placeholder: 'M1 Manchester', type: 'text' },
                     { label: 'Parcel Size', field: 'parcelSize', icon: <FiPackage className="text-royal" />, type: 'select', 
                       options: [
-                        { value: '', label: 'Select Dimension' },
+                        { value: '', label: 'Select Size' },
                         { value: 'small', label: 'Small (<5kg)' },
                         { value: 'medium', label: 'Medium (5-20kg)' },
                         { value: 'large', label: 'Large (20-50kg)' },
-                        { value: 'pallet', label: 'Pallet Mission' }
+                        { value: 'pallet', label: 'Pallet Delivery' }
                       ] 
                     },
-                    { label: 'Service Speed', field: 'serviceType', icon: <FiTruck className="text-electric" />, type: 'select', 
+                    { label: 'Delivery Service', field: 'serviceType', icon: <FiTruck className="text-electric" />, type: 'select', 
                       options: [
                         { value: 'same-day', label: 'Same Day Express' },
                         { value: 'next-day', label: 'Standard Next Day' },
-                        { value: 'international', label: 'Global Strategy' }
+                        { value: 'international', label: 'Worldwide Delivery' }
                       ] 
                     },
                   ].map((field) => (
@@ -236,7 +236,7 @@ export default function BookingWidget() {
                       disabled={isSending}
                       className={`w-full h-12 bg-accent text-white font-black text-[11px] uppercase tracking-[0.2em] rounded-xl shadow-xl shadow-accent/20 flex items-center justify-center gap-3 transition-smooth ${isSending ? 'opacity-50' : 'hover:scale-[1.02] active:scale-95'}`}
                     >
-                      {isSending ? <>SYNCING...</> : <>INITIATE MISSION <FiArrowRight className="text-base" /></>}
+                      {isSending ? <>SENDING...</> : <>GET QUOTE NOW <FiArrowRight className="text-base" /></>}
                     </button>
                   </div>
                 </div>

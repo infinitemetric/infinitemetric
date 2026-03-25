@@ -46,9 +46,9 @@ export default function Hero() {
             transition={{ duration: 0.8 }}
             className="font-heading font-black text-5xl sm:text-7xl xl:text-8xl text-white leading-[0.95] tracking-tight mb-8"
           >
-            Precision <br />
+            Reliable <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric via-blue-400 to-blue-200">
-              Logistics.
+              Courier Services.
             </span>
           </motion.h1>
 
@@ -58,7 +58,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-white/50 text-base sm:text-lg lg:text-xl max-w-xl mb-12 leading-relaxed"
           >
-            Engineered for the modern enterprise. We provide high-velocity, UK-wide courier solutions with absolute data transparency.
+            Fast, UK-wide delivery solutions for your business. Reliable, tracked, and professional services you can trust.
           </motion.p>
 
           <motion.div
@@ -99,10 +99,10 @@ export default function Hero() {
                    <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
                      <FiGlobe className="text-electric text-xl" />
                    </div>
-                   <div>
-                     <p className="text-white font-black text-xs uppercase tracking-widest">Route Matrix</p>
-                     <p className="text-white/30 text-[10px] font-bold">Global Status: Optimal</p>
-                   </div>
+                    <div>
+                      <p className="text-white font-black text-xs uppercase tracking-widest">Live Tracking</p>
+                      <p className="text-white/30 text-[10px] font-bold">All systems online</p>
+                    </div>
                  </div>
                  <div className="text-right">
                    <p className="text-royal font-black text-xs uppercase tracking-widest">Active</p>
@@ -131,16 +131,16 @@ export default function Hero() {
                </div>
 
                <div className="grid grid-cols-2 gap-6">
-                 <div className="p-6 rounded-3xl bg-royal/10 border border-royal/20">
-                   <FiActivity className="text-royal mb-3 text-lg" />
-                   <p className="text-white font-black text-xs uppercase mb-1">Response</p>
-                   <p className="text-white/40 text-[10px] font-bold">Direct Call Team</p>
-                 </div>
-                 <div className="p-1 px-6 pb-6 rounded-3xl bg-electric/10 border border-electric/20 flex flex-col items-center sm:items-start justify-end">
-                   <FiShield className="text-electric mb-3 text-lg mt-5" />
-                   <p className="text-white font-black text-xs uppercase mb-1">Insurance</p>
-                   <p className="text-white/40 text-[10px] font-bold">Comprehensive</p>
-                 </div>
+                  <div className="p-6 rounded-3xl bg-royal/10 border border-royal/20">
+                    <FiActivity className="text-royal mb-3 text-lg" />
+                    <p className="text-white font-black text-xs uppercase mb-1">Support</p>
+                    <p className="text-white/40 text-[10px] font-bold">24/7 Assistance</p>
+                  </div>
+                  <div className="p-1 px-6 pb-6 rounded-3xl bg-electric/10 border border-electric/20 flex flex-col items-center sm:items-start justify-end">
+                    <FiShield className="text-electric mb-3 text-lg mt-5" />
+                    <p className="text-white font-black text-xs uppercase mb-1">Insured</p>
+                    <p className="text-white/40 text-[10px] font-bold">Fully Protected</p>
+                  </div>
                </div>
             </div>
 

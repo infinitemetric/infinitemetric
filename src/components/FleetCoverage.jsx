@@ -32,12 +32,12 @@ export default function FleetCoverage() {
             <h2 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white mb-4 sm:mb-6 leading-tight">
               Powerful Fleet.<br className="lg:hidden" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-blue-300">
-                Limitless
+                UK-Wide
               </span>{' '}
-              Reach.
+              Delivery.
             </h2>
             <p className="text-white/40 text-base sm:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
-              From urban documents to industrial cargo, we possess the precise vehicle for every logistical challenge across the UK.
+              From small parcels to large cargo, we have the right vehicle for every delivery across the UK.
             </p>
           </motion.div>
           

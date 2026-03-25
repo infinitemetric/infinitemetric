@@ -5,22 +5,22 @@ const steps = [
   {
     step: '01',
     icon: <FiMousePointer className="text-2xl" />,
-    title: 'Book Mission',
-    description: 'Configure your parameters in our secure booking interface for an instant strategic quote.',
+    title: 'Book Online',
+    description: 'Enter your delivery details and get an instant price in seconds.',
     color: 'from-royal via-electric to-blue-400',
   },
   {
     step: '02',
     icon: <FiTruck className="text-2xl" />,
-    title: 'Rapid Collection',
-    description: 'Our fleet activates within 60 minutes. GPS-tracked recovery and secure handling guaranteed.',
+    title: 'We Collect',
+    description: 'Our driver will collect your items within 60 minutes of booking.',
     color: 'from-electric via-blue-400 to-blue-300',
   },
   {
     step: '03',
     icon: <FiCheckCircle className="text-2xl" />,
-    title: 'Final Delivery',
-    description: 'Precision drop-off with real-time verification and automated Proof of Delivery (POD).',
+    title: 'Safe Delivery',
+    description: 'Your items are delivered safely with real-time tracking and proof.',
     color: 'from-accent via-orange-500 to-orange-400',
   },
 ]
@@ -40,16 +40,16 @@ export default function HowItWorks() {
           className="text-center mb-8 sm:mb-10"
         >
           <span className="inline-block px-3 py-1 bg-royal/5 text-royal rounded-full text-[9px] font-black mb-4 tracking-[0.3em] uppercase">
-            Protocol
+            Process
           </span>
           <h2 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-navy mb-4 tracking-tighter">
-            Three Simple{' '}
+            Our Simple{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal via-electric to-blue-400">
               Steps
             </span>
           </h2>
           <p className="text-gray-500 max-w-sm mx-auto text-xs sm:text-sm font-medium">
-            Our process is engineered for the highest standard of corporate reliability.
+            We've streamlined our delivery process for your convenience.
           </p>
         </motion.div>
 
