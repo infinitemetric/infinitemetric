@@ -78,9 +78,9 @@ export default function Footer() {
                   United Kingdom
                 </span>
               </div>
-              <a href="mailto:ops@infinitemetric.com" className="flex flex-col gap-1 items-center sm:items-start group">
+              <a href="mailto:Srujan.konda@infinitemetric.co.uk" className="flex flex-col gap-1 items-center sm:items-start group">
                 <span className="text-slate-300 text-[9px] font-black uppercase tracking-widest whitespace-nowrap">Direct Email Support</span>
-                <span className="text-slate-900 font-black text-sm group-hover:text-royal transition-colors">ops@infinitemetric.com</span>
+                <span className="text-slate-900 font-black text-sm group-hover:text-royal transition-colors">Srujan.konda@infinitemetric.co.uk</span>
               </a>
               <a href="tel:+447896656811" className="flex flex-col gap-1 items-center sm:items-start group">
                 <span className="text-slate-300 text-[9px] font-black uppercase tracking-widest whitespace-nowrap">24/7 Logistics Hotline</span>
