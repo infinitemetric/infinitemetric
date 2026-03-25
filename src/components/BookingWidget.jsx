@@ -130,7 +130,7 @@ export default function BookingWidget() {
           <div className="absolute -inset-[2px] bg-gradient-to-r from-royal via-electric to-orange-500 rounded-[32px] blur sm:opacity-20 group-hover:opacity-60 transition duration-1000 group-hover:duration-200" />
           
           <div className="relative glass shadow-2xl rounded-[28px] p-1">
-            <div className="bg-white/90 backdrop-blur-2xl rounded-[26px] px-6 py-10 lg:px-12 lg:py-12 shadow-[0_40px_100px_rgba(0,0,0,0.08)] border border-slate-100">
+            <div className="bg-white/90 backdrop-blur-2xl rounded-[26px] px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12 shadow-[0_40px_100px_rgba(0,0,0,0.08)] border border-slate-100">
               
               {/* Header */}
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
@@ -166,15 +166,15 @@ export default function BookingWidget() {
                 </motion.div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-12 relative">
+              <form onSubmit={handleSubmit} className="space-y-8 lg:space-y-12 relative">
                 
                 {/* 1. Pickup Section */}
-                <div className="space-y-6">
+                <div className="space-y-4 lg:space-y-6">
                   <div className="flex items-center gap-4">
                     <div className="w-8 h-8 rounded-lg bg-royal/10 flex items-center justify-center text-royal font-black text-xs">1</div>
                     <span className="text-slate-900 font-black text-xs uppercase tracking-widest">Pickup Dispatch</span>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-3 lg:gap-5">
                     <div className="md:col-span-6 relative space-y-2">
                       <label className="text-slate-400 text-[9px] font-black uppercase tracking-widest">Address Line 1</label>
                       <div className="relative">
@@ -184,7 +184,7 @@ export default function BookingWidget() {
                           placeholder="House No / Street Name"
                           value={form.pickupAddress}
                           onChange={(e) => handleChange('pickupAddress', e.target.value)}
-                          className={`w-full h-14 pl-12 pr-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.pickupAddress ? 'border-red-500' : ''}`}
+                          className={`w-full h-11 sm:h-14 pl-12 pr-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.pickupAddress ? 'border-red-500' : ''}`}
                         />
                       </div>
                     </div>
@@ -195,7 +195,7 @@ export default function BookingWidget() {
                         placeholder="W1 1AA"
                         value={form.pickupPostcode}
                         onChange={(e) => handleChange('pickupPostcode', e.target.value)}
-                        className={`w-full h-14 px-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.pickupPostcode ? 'border-red-500' : ''}`}
+                        className={`w-full h-11 sm:h-14 px-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.pickupPostcode ? 'border-red-500' : ''}`}
                       />
                     </div>
                     <div className="md:col-span-3 relative space-y-2">
@@ -206,7 +206,7 @@ export default function BookingWidget() {
                           type="date"
                           value={form.pickupDate}
                           onChange={(e) => handleChange('pickupDate', e.target.value)}
-                          className="w-full h-14 pl-12 pr-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none"
+                          className="w-full h-11 sm:h-14 pl-12 pr-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none"
                         />
                       </div>
                     </div>
@@ -214,12 +214,12 @@ export default function BookingWidget() {
                 </div>
 
                 {/* 2. Delivery Section */}
-                <div className="space-y-6">
+                <div className="space-y-4 lg:space-y-6">
                   <div className="flex items-center gap-4">
                     <div className="w-8 h-8 rounded-lg bg-royal/10 flex items-center justify-center text-royal font-black text-xs">2</div>
                     <span className="text-slate-900 font-black text-xs uppercase tracking-widest">Delivery Terminal</span>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-3 lg:gap-5">
                     <div className="md:col-span-6 relative space-y-2">
                     <label className="text-slate-400 text-[9px] font-black uppercase tracking-widest">Address Line 1</label>
                       <div className="relative">
@@ -229,7 +229,7 @@ export default function BookingWidget() {
                           placeholder="Destination Address"
                           value={form.deliveryAddress}
                           onChange={(e) => handleChange('deliveryAddress', e.target.value)}
-                          className={`w-full h-14 pl-12 pr-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.deliveryAddress ? 'border-red-500' : ''}`}
+                          className={`w-full h-11 sm:h-14 pl-12 pr-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.deliveryAddress ? 'border-red-500' : ''}`}
                         />
                       </div>
                     </div>
@@ -240,7 +240,7 @@ export default function BookingWidget() {
                         placeholder="M1 1AA"
                         value={form.deliveryPostcode}
                         onChange={(e) => handleChange('deliveryPostcode', e.target.value)}
-                        className={`w-full h-14 px-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.deliveryPostcode ? 'border-red-500' : ''}`}
+                        className={`w-full h-11 sm:h-14 px-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.deliveryPostcode ? 'border-red-500' : ''}`}
                       />
                     </div>
                     <div className="md:col-span-3 relative space-y-2">
@@ -252,7 +252,7 @@ export default function BookingWidget() {
                           placeholder="Miles"
                           value={form.distanceMiles}
                           onChange={(e) => handleChange('distanceMiles', e.target.value)}
-                          className="w-full h-14 pl-12 pr-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none"
+                          className="w-full h-11 sm:h-14 pl-12 pr-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none"
                         />
                       </div>
                     </div>
@@ -268,7 +268,7 @@ export default function BookingWidget() {
                       <select
                         value={form.parcelSize}
                         onChange={(e) => handleChange('parcelSize', e.target.value)}
-                        className={`w-full h-14 pl-12 pr-5 bg-white border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none appearance-none cursor-pointer ${errors.parcelSize ? 'border-red-500' : ''}`}
+                        className={`w-full h-11 sm:h-14 pl-12 pr-5 bg-white border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none appearance-none cursor-pointer ${errors.parcelSize ? 'border-red-500' : ''}`}
                       >
                         <option value="">Select Size</option>
                         <option value="small">Small (&lt;5kg)</option>
@@ -286,7 +286,7 @@ export default function BookingWidget() {
                       <select
                         value={form.serviceType}
                         onChange={(e) => handleChange('serviceType', e.target.value)}
-                        className="w-full h-14 pl-12 pr-5 bg-white border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none appearance-none cursor-pointer"
+                        className="w-full h-11 sm:h-14 pl-12 pr-5 bg-white border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none appearance-none cursor-pointer"
                       >
                         <option value="same-day">Same Day Express</option>
                         <option value="next-day">Standard Next Day</option>
@@ -304,7 +304,7 @@ export default function BookingWidget() {
                         placeholder="+44 7XXX XXXXXX"
                         value={form.phone}
                         onChange={(e) => handleChange('phone', e.target.value)}
-                        className={`w-full h-14 pl-12 pr-5 bg-white border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.phone ? 'border-red-500' : ''}`}
+                        className={`w-full h-11 sm:h-14 pl-12 pr-5 bg-white border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.phone ? 'border-red-500' : ''}`}
                       />
                     </div>
                   </div>
@@ -318,7 +318,7 @@ export default function BookingWidget() {
                         placeholder="client@company.com"
                         value={form.email}
                         onChange={(e) => handleChange('email', e.target.value)}
-                        className={`w-full h-14 pl-12 pr-5 bg-white border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.email ? 'border-red-500' : ''}`}
+                        className={`w-full h-11 sm:h-14 pl-12 pr-5 bg-white border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none ${errors.email ? 'border-red-500' : ''}`}
                       />
                     </div>
                   </div>
@@ -332,13 +332,13 @@ export default function BookingWidget() {
                       placeholder="Special instructions or cargo details..."
                       value={form.message}
                       onChange={(e) => handleChange('message', e.target.value)}
-                      className="w-full h-14 pl-12 pr-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none"
+                      className="w-full h-11 sm:h-14 pl-12 pr-5 bg-slate-50 border border-slate-100 rounded-2xl text-slate-900 text-sm font-bold focus:border-royal transition-all outline-none"
                     />
                   </div>
                   <button
                     type="submit"
                     disabled={isSending}
-                    className="w-full lg:w-max h-14 px-10 bg-orange-500 text-white font-black text-xs uppercase tracking-[0.3em] rounded-2xl shadow-xl shadow-orange-500/20 hover:bg-orange-600 hover:-translate-y-1 transition-all disabled:opacity-50 flex items-center justify-center gap-3 active:scale-95"
+                    className="w-full lg:w-max h-12 lg:h-14 px-10 bg-orange-500 text-white font-black text-xs uppercase tracking-[0.3em] rounded-2xl shadow-xl shadow-orange-500/20 hover:bg-orange-600 hover:-translate-y-1 transition-all disabled:opacity-50 flex items-center justify-center gap-3 active:scale-95"
                   >
                     {isSending ? 'PROCESSING...' : <>GET QUOTE NOW <FiArrowRight /></>}
                   </button>

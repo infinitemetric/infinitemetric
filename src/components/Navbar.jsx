@@ -112,9 +112,12 @@ export default function Navbar() {
             {/* Mobile Toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden relative w-12 h-12 flex items-center justify-center rounded-2xl transition-colors border bg-white/10 text-white border-white/10 shadow-sm"
+              className="lg:hidden relative w-12 h-12 flex items-center justify-center rounded-2xl transition-colors border bg-slate-50 text-slate-900 border-slate-100 shadow-sm overflow-hidden group"
             >
-              {mobileOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+              <div className="absolute inset-0 bg-royal/10 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10 transition-transform duration-500 group-active:scale-90">
+                {mobileOpen ? <HiX size={24} /> : <HiMenu size={24} />}
+              </div>
             </button>
           </div>
         </div>
@@ -148,12 +151,12 @@ export default function Navbar() {
               animate={{ opacity: 1, scale: 1 }}
               className="pt-12 w-full max-w-sm space-y-6"
             >
-              <a href="tel:+441234567890" className="w-full py-6 flex items-center justify-center gap-4 bg-slate-50 border border-slate-100 rounded-[32px] text-slate-900">
+              <a href="tel:+447896656811" className="w-full py-6 flex items-center justify-center gap-4 bg-slate-50 border border-slate-100 rounded-[32px] text-slate-900 shadow-sm hover:shadow-md transition-all">
                 <FiPhone className="text-royal text-xl" />
-                <span className="text-xl font-bold tracking-tight">0123 456 7890</span>
+                <span className="text-xl font-black tracking-tighter">+44 7896 656811</span>
               </a>
-              <a href="#booking" onClick={() => setMobileOpen(false)} className="w-full py-7 bg-accent text-white flex items-center justify-center gap-4 rounded-[40px] font-black uppercase tracking-widest text-lg shadow-2xl">
-                Book Now
+              <a href="#booking" onClick={() => setMobileOpen(false)} className="w-full py-7 bg-accent text-white flex items-center justify-center gap-4 rounded-[40px] font-black uppercase tracking-widest text-lg shadow-2xl shadow-accent/20 active:scale-95 transition-all">
+                Book Now <FiArrowRight />
               </a>
             </motion.div>
           </motion.div>
