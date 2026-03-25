@@ -167,12 +167,12 @@ export default function BookingWidget() {
                             <select
                               value={form[field.field]}
                               onChange={(e) => handleChange(field.field, e.target.value)}
-                              className={`w-full h-14 px-6 bg-white/[0.03] border border-white/10 rounded-xl text-white text-sm font-bold focus:border-electric transition-all outline-none appearance-none cursor-pointer ${errors[field.field] ? 'border-red-500/50' : ''}`}
+                              className={`w-full h-12 px-5 bg-white/[0.03] border border-white/10 rounded-xl text-white text-sm font-bold focus:border-electric transition-all outline-none appearance-none cursor-pointer ${errors[field.field] ? 'border-red-500/50' : ''}`}
                             >
                               {field.options.map(opt => <option key={opt.value} value={opt.value} className="bg-navy">{opt.label}</option>)}
                             </select>
-                            <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none opacity-20 group-hover/field:opacity-60 transition-opacity">
-                              <FiArrowRight className="rotate-90 text-xs" />
+                            <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none opacity-20 group-hover/field:opacity-60 transition-opacity">
+                              <FiArrowRight className="rotate-90 text-[10px]" />
                             </div>
                           </div>
                         ) : (
@@ -181,7 +181,7 @@ export default function BookingWidget() {
                             placeholder={field.placeholder}
                             value={form[field.field]}
                             onChange={(e) => handleChange(field.field, e.target.value)}
-                            className={`w-full h-14 px-6 bg-white/[0.03] border border-white/10 rounded-xl text-white text-sm font-bold focus:border-electric transition-all outline-none placeholder:text-white/10 ${errors[field.field] ? 'border-red-500/50' : ''}`}
+                            className={`w-full h-12 px-5 bg-white/[0.03] border border-white/10 rounded-xl text-white text-sm font-bold focus:border-electric transition-all outline-none placeholder:text-white/10 ${errors[field.field] ? 'border-red-500/50' : ''}`}
                           />
                         )}
                         {errors[field.field] && <span className="absolute -bottom-5 left-1 text-red-400 text-[8px] font-black uppercase tracking-widest">{errors[field.field]}</span>}
@@ -198,7 +198,7 @@ export default function BookingWidget() {
                       placeholder="+44 7XXX XXXXXX"
                       value={form.phone}
                       onChange={(e) => handleChange('phone', e.target.value)}
-                      className={`w-full h-14 px-6 bg-white/[0.03] border border-white/10 rounded-xl text-white text-sm font-bold focus:border-electric transition-all outline-none placeholder:text-white/10 ${errors.phone ? 'border-red-500/50' : ''}`}
+                      className={`w-full h-12 px-5 bg-white/[0.03] border border-white/10 rounded-xl text-white text-sm font-bold focus:border-electric transition-all outline-none placeholder:text-white/10 ${errors.phone ? 'border-red-500/50' : ''}`}
                     />
                     {errors.phone && <span className="absolute -bottom-5 left-1 text-red-400 text-[8px] font-black uppercase tracking-widest">{errors.phone}</span>}
                   </div>
@@ -212,13 +212,13 @@ export default function BookingWidget() {
                       placeholder="client@enterprise.com"
                       value={form.email}
                       onChange={(e) => handleChange('email', e.target.value)}
-                      className={`w-full bg-white/5 border ${errors.email ? 'border-red-500/50' : 'border-white/10'} rounded-xl py-3 px-4 text-xs font-bold text-white outline-none focus:border-electric/50 focus:bg-white/10 transition-all placeholder:text-white/20`}
+                      className={`w-full h-12 px-5 bg-white/[0.03] border border-white/10 rounded-xl text-white text-sm font-bold focus:border-electric transition-all outline-none placeholder:text-white/10 ${errors.email ? 'border-red-500/50' : ''}`}
                     />
                     {errors.email && <span className="absolute -bottom-5 left-1 text-red-400 text-[8px] font-black uppercase tracking-widest">{errors.email}</span>}
                   </div>
 
-                  <div className="lg:col-span-1 relative group">
-                    <label className="flex items-center gap-2 text-[8px] font-black text-white/40 uppercase tracking-[0.2em] mb-1.5 transition-colors group-hover:text-electric">
+                  <div className="lg:col-span-2 relative group">
+                    <label className="flex items-center gap-2 text-white/30 text-[9px] font-black uppercase tracking-[0.2em] mb-3">
                       <FiMessageSquare className="text-accent" /> Message (Optional)
                     </label>
                     <input
@@ -226,15 +226,15 @@ export default function BookingWidget() {
                       placeholder="Additional details..."
                       value={form.message}
                       onChange={(e) => handleChange('message', e.target.value)}
-                      className="w-full bg-white/5 border border-white/10 rounded-xl py-3 px-4 text-xs font-bold text-white outline-none focus:border-electric/50 focus:bg-white/10 transition-all placeholder:text-white/20"
+                      className="w-full h-12 px-5 bg-white/[0.03] border border-white/10 rounded-xl text-white text-sm font-bold focus:border-electric transition-all outline-none placeholder:text-white/10"
                     />
                   </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4 items-end h-full">
+                  <div className="lg:col-span-1 h-full flex items-end">
                     <button
                       type="submit"
                       disabled={isSending}
-                      className={`btn-primary w-full h-14 bg-accent text-white font-black text-[11px] uppercase tracking-[0.2em] rounded-xl shadow-xl shadow-accent/20 flex items-center justify-center gap-3 ${isSending ? 'opacity-50' : 'hover:scale-[1.02]'}`}
+                      className={`w-full h-12 bg-accent text-white font-black text-[11px] uppercase tracking-[0.2em] rounded-xl shadow-xl shadow-accent/20 flex items-center justify-center gap-3 transition-smooth ${isSending ? 'opacity-50' : 'hover:scale-[1.02] active:scale-95'}`}
                     >
                       {isSending ? <>SYNCING...</> : <>INITIATE MISSION <FiArrowRight className="text-base" /></>}
                     </button>
