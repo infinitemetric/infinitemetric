@@ -34,31 +34,28 @@ export default function BookingWidget() {
     
     setIsSending(true)
     try {
-      const apiKey = import.meta.env.VITE_BREVO_API_KEY
-      const senderEmail = import.meta.env.VITE_SENDER_EMAIL
-      const contactEmail = import.meta.env.VITE_CONTACT_EMAIL
-
-      const response = await fetch('/api-brevo/v3/smtp/email', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
-          'accept': 'application/json',
-          'api-key': apiKey,
           'content-type': 'application/json',
         },
         body: JSON.stringify({
-          sender: { name: 'Infinite Metric Website', email: senderEmail },
-          to: [{ email: contactEmail, name: 'Admin' }],
+          sender: { name: 'Infinite Metric Website' },
+          to: [{ name: 'Admin' }],
           subject: 'New Booking Inquiry',
           htmlContent: `
             <div style="font-family: sans-serif; padding: 20px; color: #333;">
-              <h2 style="color: #FF6B2B;">New Booking Request</h2>
-              <p><strong>Pickup:</strong> ${form.pickup}</p>
-              <p><strong>Delivery:</strong> ${form.delivery}</p>
-              <p><strong>Size:</strong> ${form.parcelSize}</p>
-              <p><strong>Service:</strong> ${form.serviceType}</p>
-              <p><strong>Phone:</strong> ${form.phone}</p>
-              <p><strong>Email:</strong> ${form.email}</p>
-              <p><strong>Message:</strong> ${form.message || 'No additional message'}</p>
+              <h2 style="color: #FF6B2B; font-weight: 900; letter-spacing: -0.04em;">MISSION INQUIRY</h2>
+              <div style="border-left: 4px solid #1A3CFF; padding-left: 15px; margin-bottom: 25px;">
+                <p><strong>PICKUP:</strong> ${form.pickup}</p>
+                <p><strong>DELIVERY:</strong> ${form.delivery}</p>
+                <p><strong>SIZE:</strong> ${form.parcelSize}</p>
+                <p><strong>SERVICE:</strong> ${form.serviceType}</p>
+                <p><strong>PHONE:</strong> ${form.phone}</p>
+                <p><strong>EMAIL:</strong> ${form.email}</p>
+                <p><strong>MESSAGE:</strong> ${form.message || 'No additional message'}</p>
+              </div>
+              <p style="font-size: 10px; color: #999; text-transform: uppercase;">Infrastructure: Infinite Metric Limited Command Center</p>
             </div>
           `,
         }),
