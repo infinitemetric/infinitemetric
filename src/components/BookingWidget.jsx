@@ -40,48 +40,70 @@ export default function BookingWidget() {
     
     setIsSending(true)
     try {
+      // Generate Reference
+      const dateStr = new Date().toISOString().slice(2, 10).replace(/-/g, '')
+      const randomId = Math.floor(Math.random() * 999).toString().padStart(3, '0')
+      const bookingRef = `BKG-${dateStr}-${randomId}`
+      const submittedDate = new Date().toLocaleString('en-GB', { 
+        day: '2-digit', 
+        month: 'long', 
+        year: 'numeric', 
+        hour: '2-digit', 
+        minute: '2-digit',
+        hour12: true
+      })
+
       const response = await fetch('/api/send-email', {
         method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          sender: { name: 'Infinite Metric Website' },
           to: [{ name: 'Admin' }],
-          subject: 'New Booking Inquiry',
+          subject: `New Booking Inquiry: ${bookingRef}`,
           htmlContent: `
-            <div style="background-color: #f8fafc; padding: 50px 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-              <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
-                <div style="background-color: #0A0F2C; padding: 30px; text-align: center;">
-                  <h1 style="color: #ffffff; margin: 0; font-size: 20px; letter-spacing: 2px; text-transform: uppercase;">Infinite Metric Dispatch</h1>
+            <div style="background-color: #fcfcfc; padding: 40px 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #000000;">
+              <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #000000; padding: 40px;">
+                <h1 style="font-size: 18px; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 30px; text-transform: uppercase;">Infinite Metric Dispatch</h1>
+                
+                <p style="font-size: 14px; margin-bottom: 25px; line-height: 1.5;">A new booking enquiry has been submitted via the website. Please find the details below.</p>
+                
+                <div style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; padding: 20px 0; margin-bottom: 30px;">
+                  <p style="margin: 0; font-size: 13px; font-weight: 700;">Booking Reference: ${bookingRef}</p>
+                  <p style="margin: 5px 0 0 0; font-size: 13px; color: #666;">Submitted: ${submittedDate}</p>
                 </div>
-                <div style="padding: 40px;">
-                  <h2 style="color: #1e293b; margin-top: 0; font-size: 24px; font-weight: 900; letter-spacing: -0.02em;">New Booking Inquiry</h2>
-                  <p style="color: #64748b; font-size: 14px; line-height: 1.5; margin-bottom: 30px;">A new delivery mission has been requested via the digital terminal. Details are archived below.</p>
-                  
-                  <div style="background-color: #f1f5f9; border-radius: 12px; padding: 25px; margin-bottom: 30px;">
-                    <h3 style="color: #2563eb; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 0; margin-bottom: 15px;">1. Pickup Information</h3>
-                    <p style="margin: 5px 0; font-size: 14px; color: #334155;"><strong>Address:</strong> ${form.pickupAddress}</p>
-                    <p style="margin: 5px 0; font-size: 14px; color: #334155;"><strong>Postcode:</strong> ${form.pickupPostcode}</p>
-                    <p style="margin: 5px 0; font-size: 14px; color: #334155;"><strong>Date:</strong> ${form.pickupDate}</p>
-                    
-                    <h3 style="color: #2563eb; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 25px; margin-bottom: 15px;">2. Delivery Information</h3>
-                    <p style="margin: 5px 0; font-size: 14px; color: #334155;"><strong>Address:</strong> ${form.deliveryAddress}</p>
-                    <p style="margin: 5px 0; font-size: 14px; color: #334155;"><strong>Postcode:</strong> ${form.deliveryPostcode}</p>
-                    <p style="margin: 5px 0; font-size: 14px; color: #334155;"><strong>Distance:</strong> ${form.distanceMiles || 'N/A'} Miles</p>
-                    
-                    <h3 style="color: #2563eb; font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-top: 25px; margin-bottom: 15px;">3. Logistics & Contact</h3>
-                    <p style="margin: 5px 0; font-size: 14px; color: #334155;"><strong>Type:</strong> ${form.parcelSize} / ${form.serviceType}</p>
-                    <p style="margin: 5px 0; font-size: 14px; color: #334155;"><strong>Phone:</strong> ${form.phone}</p>
-                    <p style="margin: 5px 0; font-size: 14px; color: #334155;"><strong>Email:</strong> ${form.email}</p>
-                  </div>
 
-                  <div style="border-top: 1px solid #e2e8f0; padding-top: 20px;">
-                    <p style="color: #64748b; font-size: 12px; font-style: italic;"><strong>Additional Message:</strong> ${form.message || 'No additional instructions provided.'}</p>
-                  </div>
+                <div style="margin-bottom: 30px;">
+                  <h3 style="font-size: 14px; text-transform: uppercase; font-weight: 900; margin-bottom: 15px; border-left: 3px solid #000000; padding-left: 10px;">1. Customer Details</h3>
+                  <p style="margin: 5px 0; font-size: 14px;"><strong>Name:</strong> ${form.email.split('@')[0]}</p>
+                  <p style="margin: 5px 0; font-size: 14px;"><strong>Phone:</strong> ${form.phone}</p>
+                  <p style="margin: 5px 0; font-size: 14px;"><strong>Email:</strong> ${form.email}</p>
                 </div>
-                <div style="background-color: #f8fafc; padding: 20px; text-align: center; border-top: 1px solid #e2e8f0;">
-                  <p style="color: #94a3b8; font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Infinite Metric Limited - Official Dispatch Protocol</p>
+
+                <div style="margin-bottom: 30px;">
+                  <h3 style="font-size: 14px; text-transform: uppercase; font-weight: 900; margin-bottom: 15px; border-left: 3px solid #000000; padding-left: 10px;">2. Collection Details</h3>
+                  <p style="margin: 5px 0; font-size: 14px;"><strong>Address:</strong> ${form.pickupAddress}</p>
+                  <p style="margin: 5px 0; font-size: 14px;"><strong>Postcode:</strong> ${form.pickupPostcode}</p>
+                  <p style="margin: 5px 0; font-size: 14px;"><strong>Date:</strong> ${form.pickupDate}</p>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                  <h3 style="font-size: 14px; text-transform: uppercase; font-weight: 900; margin-bottom: 15px; border-left: 3px solid #000000; padding-left: 10px;">3. Delivery Details</h3>
+                  <p style="margin: 5px 0; font-size: 14px;"><strong>Address:</strong> ${form.deliveryAddress}</p>
+                  <p style="margin: 5px 0; font-size: 14px;"><strong>Postcode:</strong> ${form.deliveryPostcode}</p>
+                  <p style="margin: 5px 0; font-size: 14px;"><strong>Distance:</strong> ${form.distanceMiles || 'N/A'} Miles</p>
+                </div>
+
+                <div style="margin-bottom: 30px;">
+                  <h3 style="font-size: 14px; text-transform: uppercase; font-weight: 900; margin-bottom: 15px; border-left: 3px solid #000000; padding-left: 10px;">4. Shipment Information</h3>
+                  <p style="margin: 5px 0; font-size: 14px;"><strong>Service Type:</strong> ${form.parcelSize} &ndash; ${form.serviceType}</p>
+                </div>
+
+                <div style="margin-bottom: 30px; border-top: 1px solid #eee; padding-top: 20px;">
+                  <h3 style="font-size: 12px; text-transform: uppercase; font-weight: 900; color: #666; margin-bottom: 10px;">Additional Notes</h3>
+                  <p style="margin: 0; font-size: 14px; font-style: italic;">${form.message || 'N/A'}</p>
+                </div>
+
+                <div style="border-top: 1px solid #000000; padding-top: 20px; text-align: center;">
+                  <p style="font-size: 10px; font-weight: 900; text-transform: uppercase; letter-spacing: 2px;">End of Enquiry</p>
                 </div>
               </div>
             </div>
@@ -159,7 +181,7 @@ export default function BookingWidget() {
                       <HiCheckCircle className="text-3xl" />
                     </div>
                     <div>
-                      <h3 className="text-slate-900 font-black text-xl uppercase tracking-tighter">Transmission Successful</h3>
+                      <h3 className="text-slate-900 font-black text-xl uppercase tracking-tighter">Quote has been sent</h3>
                       <p className="text-slate-500 font-bold text-sm">Infinite Metric Limited will get back to you</p>
                     </div>
                   </div>
