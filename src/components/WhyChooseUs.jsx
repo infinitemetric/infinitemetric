@@ -63,16 +63,12 @@ function AnimatedNumber({ target, suffix }) {
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-us" className="relative py-8 sm:py-12 bg-[#05081a] overflow-hidden w-full">
+    <section id="why-us" className="relative py-8 sm:py-12 bg-white overflow-hidden w-full">
       {/* Precision Grid Background */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
-        backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)',
-        backgroundSize: '40px 40px',
-      }} />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,#F1F5F9_0%,transparent_50%)] opacity-100" />
       
       {/* Cinematic Glows */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-royal/10 rounded-full blur-[160px] -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-electric/10 rounded-full blur-[160px] translate-y-1/2 -translate-x-1/2" />
+      {/* Removed cinematic glows for light mode */}
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
@@ -81,9 +77,9 @@ export default function WhyChooseUs() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-block px-3 py-1 glass border border-white/5 rounded-full mb-6"
+            className="inline-block px-3 py-1 bg-slate-50 border border-slate-100 rounded-full mb-6"
           >
-            <span className="text-accent font-black text-[9px] uppercase tracking-[0.4em] mb-4 block">
+            <span className="text-royal font-black text-[9px] uppercase tracking-[0.4em] mb-4 block">
               Trusted Delivery Partners
             </span>
           </motion.div>
@@ -91,7 +87,7 @@ export default function WhyChooseUs() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-white tracking-tighter leading-tight"
+              className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-slate-900 tracking-tighter leading-tight"
             >
               Why{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal via-electric to-blue-400">
@@ -102,7 +98,7 @@ export default function WhyChooseUs() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-white/40 max-w-xl mx-auto text-sm sm:text-base leading-relaxed font-medium"
+            className="text-slate-500 max-w-xl mx-auto text-sm sm:text-base leading-relaxed font-medium"
           >
             Redefining logistics through traditional reliability and modern data architecture.
           </motion.p>
@@ -110,22 +106,22 @@ export default function WhyChooseUs() {
 
         {/* Premium Stats Row */}
         <div className="relative mb-20 sm:mb-32">
-          <div className="absolute -inset-2 glass rounded-[36px] opacity-10 hidden lg:block" />
+          <div className="absolute -inset-2 bg-slate-100 rounded-[36px] opacity-5 hidden lg:block" />
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative grid grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/5 bg-white/[0.01] backdrop-blur-xl rounded-[28px] border border-white/5 shadow-2xl overflow-hidden"
+            className="relative grid grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 bg-white rounded-[28px] border border-slate-100 shadow-lg overflow-hidden"
           >
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
-                className={`p-8 sm:p-10 text-center sm:text-left group hover:bg-white/[0.02] transition-smooth border-white/5`}
+                className={`p-8 sm:p-10 text-center sm:text-left group hover:bg-slate-50 transition-smooth border-slate-100`}
               >
                 <div className="flex flex-col gap-1 items-center sm:items-start">
                   <AnimatedNumber target={stat.number} suffix={stat.suffix} />
-                  <p className="text-white/30 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] group-hover:text-electric transition-colors mt-2 text-center sm:text-left">{stat.label}</p>
+                  <p className="text-slate-900 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] group-hover:text-royal transition-colors mt-2 text-center sm:text-left">{stat.label}</p>
                 </div>
               </div>
             ))}
@@ -141,13 +137,13 @@ export default function WhyChooseUs() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="flex flex-col p-8 sm:p-10 rounded-[40px] glass hover:bg-white/[0.05] border border-white/5 hover:border-electric/20 transition-smooth group items-center sm:items-start text-center sm:text-left shadow-2xl shadow-black/5"
+              className="flex flex-col p-8 sm:p-10 rounded-[40px] bg-white border border-slate-100 hover:bg-slate-50 hover:shadow-lg transition-smooth group items-center sm:items-start text-center sm:text-left shadow-md shadow-slate-100"
             >
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-royal to-electric flex items-center justify-center text-white mb-10 group-hover:rotate-[10deg] transition-transform shadow-lg shadow-royal/20">
+              <div className="w-16 h-16 rounded-2xl bg-royal/10 flex items-center justify-center text-royal mb-10 group-hover:rotate-[10deg] transition-transform shadow-md shadow-royal/10">
                 {pillar.icon}
               </div>
-              <h3 className="font-heading font-black text-xl text-white mb-4 tracking-tight group-hover:text-electric transition-colors">{pillar.title}</h3>
-              <p className="text-white/40 text-sm leading-relaxed font-medium group-hover:text-white/60 transition-colors">{pillar.description}</p>
+              <h3 className="font-heading font-black text-xl text-slate-900 mb-4 tracking-tight group-hover:text-royal transition-colors">{pillar.title}</h3>
+              <p className="text-slate-500 text-sm leading-relaxed font-medium group-hover:text-slate-700 transition-colors">{pillar.description}</p>
             </motion.div>
           ))}
         </div>

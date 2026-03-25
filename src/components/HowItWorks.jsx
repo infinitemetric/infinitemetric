@@ -39,12 +39,12 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-8 sm:mb-10"
         >
-          <span className="inline-block px-3 py-1 bg-royal/5 text-royal rounded-full text-[9px] font-black mb-4 tracking-[0.3em] uppercase">
+          <span className="inline-block px-3 py-1 bg-royal/5 text-royal rounded-full text-[9px] font-black mb-4 tracking-[0.2em] uppercase">
             Process
           </span>
-          <h2 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-navy mb-4 tracking-tighter">
+          <h2 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-slate-900 mb-4 tracking-tighter">
             Our Simple{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal via-electric to-blue-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal via-electric to-blue-600">
               Steps
             </span>
           </h2>
@@ -79,7 +79,7 @@ export default function HowItWorks() {
               >
                 {/* Step Icon & Number */}
                 <div className="relative mx-auto mb-10 w-max">
-                  <div className={`w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white shadow-2xl shadow-blue-500/10 group-hover:scale-110 group-hover:shadow-blue-500/20 transition-smooth rotate-3 group-hover:rotate-0`}>
+                  <div className={`w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-white flex items-center justify-center text-royal shadow-2xl shadow-blue-500/10 group-hover:scale-110 group-hover:shadow-blue-500/20 transition-smooth rotate-3 group-hover:rotate-0`}>
                     {step.icon}
                   </div>
                   <div className="absolute -top-3 -right-3 w-10 h-10 rounded-2xl bg-white shadow-xl flex items-center justify-center border border-gray-100 z-20 group-hover:-translate-y-1 transition-transform">
@@ -88,7 +88,7 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Content */}
-                <h3 className="font-heading font-black text-xl text-navy mb-4 tracking-tight group-hover:text-royal transition-colors">{step.title}</h3>
+                <h3 className="font-heading font-black text-xl text-slate-900 mb-4 tracking-tight group-hover:text-royal transition-colors">{step.title}</h3>
                 <p className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-xs mx-auto font-medium group-hover:text-gray-700 transition-colors">
                   {step.description}
                 </p>

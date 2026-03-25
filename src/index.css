@@ -116,8 +116,7 @@ section {
   font-family: var(--font-heading);
   font-weight: 900;
   letter-spacing: -0.04em;
-  @apply bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/40;
-  filter: drop-shadow(0 0 10px rgba(79, 142, 247, 0.2));
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-slate-900 via-slate-800 to-slate-600;
 }
 
 .text-premium {

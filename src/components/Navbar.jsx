@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiMenu, HiX } from 'react-icons/hi'
-import { FiPhone, FiArrowRight } from 'react-icons/fi'
+import { FiPhone, FiArrowRight, FiMapPin } from 'react-icons/fi'
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -13,6 +13,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [showAddress, setShowAddress] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -29,24 +30,49 @@ export default function Navbar() {
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
           scrolled || mobileOpen
             ? 'py-2'
-            : 'py-4'
+            : 'py-2'
         }`}
       >
         <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
           <div className={`relative flex items-center justify-between px-8 py-2.5 rounded-[28px] transition-all duration-700 border ${
             scrolled || mobileOpen
-              ? 'bg-navy border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.5)]'
-              : 'bg-navy/40 backdrop-blur-xl border-white/10 shadow-2xl'
+              ? 'bg-white border-slate-200 shadow-[0_20px_50px_rgba(0,0,0,0.1)]'
+              : 'bg-white/90 backdrop-blur-xl border-slate-200/50 shadow-lg'
           }`}>
-            {/* Logo */}
-            <div className="flex-shrink-0">
-              <a href="#home" className="relative group">
+            <div className="flex-shrink-0 relative">
+              <button 
+                onClick={() => setShowAddress(!showAddress)}
+                className="relative group focus:outline-none"
+              >
                 <img 
                   src="/logo.png" 
                   alt="Infinite Metric"
-                  className="h-9 sm:h-10 w-auto object-contain transition-all duration-500 brightness-0 invert"
+                  className="h-9 sm:h-10 w-auto object-contain transition-all duration-500 hover:scale-105 active:scale-95"
                 />
-              </a>
+                
+                <AnimatePresence>
+                  {showAddress && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                      className="absolute top-14 left-0 w-64 p-5 bg-white rounded-3xl border border-slate-100 shadow-2xl z-50 text-left cursor-default"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 rounded-xl bg-royal/10 flex items-center justify-center text-royal flex-shrink-0">
+                          <FiMapPin className="text-xl" />
+                        </div>
+                        <div className="space-y-1">
+                          <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Headquarters</p>
+                          <p className="text-navy font-black text-sm leading-tight">Regal House, 70 London Road,<br/>Twickenham, TW1 3QS</p>
+                          <p className="text-royal text-[9px] font-black uppercase tracking-widest pt-2">United Kingdom</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </button>
             </div>
 
             {/* Modern Central Navigation */}
@@ -55,11 +81,10 @@ export default function Navbar() {
                 <a
                   key={link.name}
                   href={link.href}
-                  style={{ color: 'white' }}
-                  className="px-6 py-2.5 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.25em] transition-all duration-500 rounded-xl relative group overflow-hidden translate-y-0.5"
+                  className="px-6 py-2.5 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.25em] transition-all duration-500 rounded-xl relative group overflow-hidden translate-y-0.5 text-slate-900"
                 >
                   <span className="relative z-10">{link.name}</span>
-                  <span className="absolute inset-0 scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-500 rounded-xl bg-white/10" />
+                  <span className="absolute inset-0 scale-y-0 group-hover:scale-y-100 transition-transform origin-bottom duration-500 rounded-xl bg-slate-100" />
                 </a>
               ))}
             </div>
@@ -67,11 +92,10 @@ export default function Navbar() {
             {/* Action Group */}
             <div className="hidden lg:flex items-center gap-8">
               <div className="flex flex-col items-end group">
-                <p className="text-[8px] font-black uppercase tracking-[0.3em] leading-none mb-1 text-white/40">Urgent Support</p>
+                <p className="text-[8px] font-black uppercase tracking-[0.3em] leading-none mb-1 text-slate-400">Urgent Support</p>
                 <a 
                   href="tel:+447896656811" 
-                  style={{ color: 'white' }}
-                  className="font-black text-sm tracking-tighter flex items-center gap-2 hover:text-electric transition-colors"
+                  className="font-black text-sm tracking-tighter flex items-center gap-2 text-slate-900 hover:text-electric transition-colors"
                 >
                   +44 7896 656811
                 </a>
@@ -103,7 +127,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[90] bg-navy lg:hidden p-6 pt-32 flex flex-col items-center justify-center space-y-12"
+            className="fixed inset-0 z-[90] bg-white lg:hidden p-6 pt-32 flex flex-col items-center justify-center space-y-12"
           >
             {navLinks.map((link, i) => (
               <motion.a
@@ -113,7 +137,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className="text-4xl font-black text-white/30 hover:text-white transition-colors tracking-tighter"
+                className="text-4xl font-black text-slate-300 hover:text-slate-900 transition-colors tracking-tighter"
               >
                 {link.name}
               </motion.a>
@@ -124,7 +148,7 @@ export default function Navbar() {
               animate={{ opacity: 1, scale: 1 }}
               className="pt-12 w-full max-w-sm space-y-6"
             >
-              <a href="tel:+441234567890" className="w-full py-6 flex items-center justify-center gap-4 bg-white/5 border border-white/5 rounded-[32px] text-white">
+              <a href="tel:+441234567890" className="w-full py-6 flex items-center justify-center gap-4 bg-slate-50 border border-slate-100 rounded-[32px] text-slate-900">
                 <FiPhone className="text-royal text-xl" />
                 <span className="text-xl font-bold tracking-tight">0123 456 7890</span>
               </a>
