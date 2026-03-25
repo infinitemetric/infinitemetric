@@ -90,14 +90,14 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
-    <section id="faq" className="section-padding bg-white relative overflow-visible w-full">
+    <section id="faq" className="py-6 sm:py-10 bg-white relative overflow-visible w-full">
       {/* Precision Accents */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-[#1A3CFF]/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#4F8EF7]/5 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center mb-12 sm:mb-16 lg:mb-24">
+        <div className="text-center mb-6 sm:mb-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -110,7 +110,7 @@ export default function FAQ() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-heading font-black text-3xl sm:text-5xl lg:text-7xl text-[#0A0F2C] mb-6 sm:mb-8 tracking-tighter"
+            className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-[#0A0F2C] mb-6 sm:mb-8 tracking-tighter"
           >
             Knowledge<br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1A3CFF] to-[#4F8EF7]">

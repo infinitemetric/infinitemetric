@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import BookingWidget from './components/BookingWidget'
@@ -16,7 +15,9 @@ function App() {
     <div className="bg-white text-gray-900 overflow-x-hidden w-full">
       <Navbar />
       <Hero />
-      <BookingWidget />
+      <div className="relative">
+        <BookingWidget />
+      </div>
       <Services />
       <WhyChooseUs />
       <HowItWorks />

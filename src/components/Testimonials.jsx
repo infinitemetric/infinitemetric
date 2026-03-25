@@ -53,7 +53,7 @@ export default function Testimonials() {
   }, [next])
 
   return (
-    <section id="testimonials" className="section-padding bg-[#0A0F2C] relative overflow-hidden w-full text-white">
+    <section id="testimonials" className="py-6 sm:py-10 bg-[#0A0F2C] relative overflow-hidden w-full text-white">
       {/* Cinematic Overlays */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#1A3CFF]/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#4F8EF7]/10 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2" />
@@ -73,7 +73,7 @@ export default function Testimonials() {
               <div className="inline-block px-4 py-1.5 bg-[#4F8EF7]/10 text-[#4F8EF7] rounded-full text-[9px] sm:text-[10px] font-black tracking-[0.2em] sm:tracking-[0.3em] uppercase border border-[#4F8EF7]/20">
                 Network Credibility
               </div>
-              <h2 className="font-heading font-black text-3xl sm:text-5xl lg:text-7xl leading-[1.1] tracking-tighter">
+              <h2 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl leading-[1.1] tracking-tighter">
                 The Logistics Choice of <br className="hidden sm:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F8EF7] to-blue-300">
                   Global Enterprises

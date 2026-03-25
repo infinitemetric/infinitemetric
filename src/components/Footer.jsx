@@ -1,20 +1,20 @@
-import { FiMail, FiPhone, FiMapPin, FiArrowUpRight } from 'react-icons/fi'
+import { FiMail, FiPhone, FiMapPin, FiArrowUpRight, FiLayers } from 'react-icons/fi'
 import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa'
 
 const serviceLinks = [
   { name: 'Same Day Courier', href: '#services' },
-  { name: 'UK Next Day', href: '#services' },
-  { name: 'International', href: '#services' },
+  { name: 'UK Next Day Delivery', href: '#services' },
+  { name: 'Global Strategy', href: '#services' },
   { name: 'Movers & Packers', href: '#services' },
 ]
 
 const quickLinks = [
-  { name: 'Home', href: '#home' },
-  { name: 'Book Online', href: '#booking' },
-  { name: 'Our Services', href: '#services' },
-  { name: 'Why Choose Us', href: '#why-us' },
-  { name: 'Coverage Area', href: '#coverage' },
-  { name: 'FAQ', href: '#faq' },
+  { name: 'Mission Home', href: '#home' },
+  { name: 'Secure Booking', href: '#booking' },
+  { name: 'Infrastructure', href: '#services' },
+  { name: 'Trust Assets', href: '#why-us' },
+  { name: 'Global Coverage', href: '#coverage' },
+  { name: 'FAQ Matrix', href: '#faq' },
 ]
 
 const socials = [
@@ -26,40 +26,34 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0A0F2C] relative overflow-hidden w-full mb-0 pb-[40px] text-white">
-      {/* Top gradient line */}
-      <div className="h-1 bg-gradient-to-r from-[#1A3CFF] via-[#4F8EF7] to-[#FF6B2B]" />
+    <footer className="bg-[#05081a] relative overflow-hidden w-full text-white pt-24 pb-12">
+      {/* Cinematic Top Line */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-royal via-electric to-accent opacity-50 shadow-[0_4px_20px_rgba(26,60,255,0.3)]" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8 sm:pb-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-10 mb-12 sm:mb-14">
-          {/* Brand */}
-          <div className="lg:col-span-1 text-center sm:text-left">
-            <div className="flex items-center justify-center sm:justify-start gap-3 mb-5">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#1A3CFF] to-[#4F8EF7] flex items-center justify-center shadow-lg shadow-royal/20">
-                <span className="text-white font-heading font-black text-lg">IM</span>
-              </div>
-              <div className="text-left">
-                <span className="text-white font-heading font-bold text-lg block leading-tight">
-                  Infinite Metric
-                </span>
-                <span className="text-[#4F8EF7] text-[10px] font-black tracking-widest uppercase">
-                  Limited
-                </span>
-              </div>
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20 lg:mb-24">
+          {/* Brand Infrastructure */}
+          <div className="space-y-8 flex flex-col items-center sm:items-start text-center sm:text-left">
+            <div className="flex items-center gap-3 group transition-transform hover:scale-102">
+              <img 
+                src="/logo.png" 
+                alt="Logo"
+                className="h-10 sm:h-12 w-auto object-contain brightness-0 invert"
+              />
             </div>
-            <p className="text-white/60 text-sm leading-relaxed mb-8 font-medium">
-              UK's most trusted premium courier, movers & packers service. Redefining precision logistics through speed, safety, and scale.
+            <p className="text-white/40 text-[13px] leading-relaxed max-w-xs font-medium uppercase tracking-widest text-center sm:text-left">
+              UK's PREMIER PRECISION LOGISTICS INFRASTRUCTURE. REDEFINING RELIABILITY THROUGH SCALABLE SPEED AND INTEGRITY.
             </p>
-            {/* Social Icons */}
-            <div className="flex justify-center sm:justify-start gap-3">
+            {/* Social Matrix */}
+            <div className="flex gap-3">
               {socials.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
-                  className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white hover:bg-[#4F8EF7] hover:scale-110 hover:-translate-y-1 transition-all duration-300 border border-white/5"
+                  className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/50 hover:bg-royal hover:text-white hover:scale-110 hover:-translate-y-1 transition-all duration-500 border border-white/5"
                 >
-                  <span className="scale-110">{s.icon}</span>
+                  <span className="scale-100">{s.icon}</span>
                 </a>
               ))}
             </div>
@@ -67,23 +61,17 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="text-center sm:text-left">
-            <h4 className="font-heading font-black text-white text-[10px] mb-6 sm:mb-8 uppercase tracking-[0.2em]">
-              Navigation
+            <h4 className="font-heading font-black text-white text-[10px] mb-8 uppercase tracking-[0.4em] text-royal">
+              PROTOCOL
             </h4>
             <ul className="space-y-4">
-              {[
-                { name: 'Home', href: '#home' },
-                { name: 'Book Online', href: '#booking' },
-                { name: 'Why Choose Us', href: '#why-us' },
-                { name: 'Coverage', href: '#coverage' },
-                { name: 'FAQ', href: '#faq' }
-              ].map((link) => (
+              {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-white/50 text-sm hover:text-white transition-all duration-300 flex items-center justify-center sm:justify-start gap-2 group font-semibold"
+                    className="text-white/30 text-xs sm:text-[13px] hover:text-white transition-smooth flex items-center justify-center sm:justify-start gap-3 group font-black uppercase tracking-widest"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#4F8EF7] opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block" />
+                    <span className="w-1 h-1 rounded-full bg-royal opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block" />
                     {link.name}
                   </a>
                 </li>
@@ -91,24 +79,19 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Services Matrix */}
           <div className="text-center sm:text-left">
-            <h4 className="font-heading font-black text-white text-[10px] mb-6 sm:mb-8 uppercase tracking-[0.2em]">
-              Our Verticals
+            <h4 className="font-heading font-black text-white text-[10px] mb-8 uppercase tracking-[0.4em] text-electric">
+              VERTICALS
             </h4>
             <ul className="space-y-4">
-              {[
-                { name: 'Same Day Courier', href: '#services' },
-                { name: 'UK Next Day', href: '#services' },
-                { name: 'International', href: '#services' },
-                { name: 'Movers & Packers', href: '#services' }
-              ].map((link) => (
+              {serviceLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-white/50 text-sm hover:text-white transition-all duration-300 flex items-center justify-center sm:justify-start gap-2 group font-semibold"
+                    className="text-white/30 text-xs sm:text-[13px] hover:text-white transition-smooth flex items-center justify-center sm:justify-start gap-3 group font-black uppercase tracking-widest"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#FF6B2B] opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block" />
+                    <span className="w-1 h-1 rounded-full bg-electric opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block" />
                     {link.name}
                   </a>
                 </li>
@@ -116,57 +99,49 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div className="text-center sm:text-left">
-            <h4 className="font-heading font-black text-white text-[10px] mb-6 sm:mb-8 uppercase tracking-[0.2em]">
-              Headquarters
+          {/* Contact Matrix */}
+          <div className="text-center sm:text-left space-y-8">
+            <h4 className="font-heading font-black text-white text-[10px] uppercase tracking-[0.4em] text-accent">
+              COMMAND CENTER
             </h4>
             <ul className="space-y-6">
               <li>
-                <a href="tel:+441234567890" className="flex items-center justify-center sm:justify-start gap-4 text-white/50 hover:text-white transition-all duration-300 group">
-                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-[#4F8EF7]/20 transition-colors hidden sm:flex">
-                    <FiPhone className="text-[#4F8EF7]" />
+                <a href="tel:+447896656811" className="flex items-center justify-center sm:justify-start gap-4 text-white hover:text-royal transition-smooth group">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/5 group-hover:bg-royal/10 transition-colors hidden sm:flex">
+                    <FiPhone className="text-royal text-sm" />
                   </div>
-                  <span className="text-sm font-bold">0123 456 7890</span>
+                  <div className="text-left">
+                    <p className="text-[10px] font-black text-white/30 uppercase tracking-widest">Phone Infrastructure</p>
+                    <p className="text-base font-bold">+44 7896 656811</p>
+                  </div>
                 </a>
               </li>
               <li>
-                <a href="mailto:info@infinitemetric.co.uk" className="flex items-center justify-center sm:justify-start gap-4 text-white/50 hover:text-white transition-all duration-300 group">
-                  <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-[#4F8EF7]/20 transition-colors hidden sm:flex">
-                    <FiMail className="text-[#4F8EF7]" />
+                <a href="mailto:info@infinitemetric.co.uk" className="flex items-center justify-center sm:justify-start gap-4 text-white hover:text-electric transition-smooth group">
+                  <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/5 group-hover:bg-electric/10 transition-colors hidden sm:flex">
+                    <FiMail className="text-electric text-sm" />
                   </div>
-                  <span className="text-sm font-bold">info@infinitemetric.co.uk</span>
+                  <div className="text-left">
+                    <p className="text-[10px] font-black text-white/30 uppercase tracking-widest">Email Uplink</p>
+                    <p className="text-base font-bold">info@infinitemetric.co.uk</p>
+                  </div>
                 </a>
-              </li>
-              <li className="flex items-center sm:items-start justify-center sm:justify-start gap-4 text-white/50">
-                <div className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 hidden sm:flex">
-                  <FiMapPin className="text-[#4F8EF7]" />
-                </div>
-                <span className="text-sm font-medium leading-relaxed">
-                  123 Logistics Lane<br />
-                  London, EC1A 1BB<br />
-                  United Kingdom
-                </span>
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/5 pt-8 sm:pt-10 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="text-white/40 text-[10px] sm:text-[11px] font-bold tracking-wider uppercase text-center sm:text-left">
-            © {new Date().getFullYear()} Infinite Metric Limited. All rights reserved.
+        {/* Global Footer Sub-Bar */}
+        <div className="pt-12 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-8 opacity-40">
+          <p className="text-[10px] sm:text-[11px] font-black tracking-[0.2em] uppercase text-center sm:text-left">
+            © {new Date().getFullYear()} Infinite Metric Logistics Limited. All rights reserved. Precision is Priority.
           </p>
-          <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
-            <a href="#" className="text-white/40 text-[10px] sm:text-[11px] font-bold hover:text-white transition-colors uppercase tracking-widest">
-              Privacy
-            </a>
-            <a href="#" className="text-white/40 text-[10px] sm:text-[11px] font-bold hover:text-white transition-colors uppercase tracking-widest">
-              Terms
-            </a>
-            <a href="#" className="text-white/40 text-[10px] sm:text-[11px] font-bold hover:text-white transition-colors uppercase tracking-widest">
-              Cookies
-            </a>
+          <div className="flex gap-8">
+            {['Privacy', 'Legal', 'Governance'].map(link => (
+              <a key={link} href="#" className="text-[10px] sm:text-[11px] font-black hover:text-white transition-colors uppercase tracking-[0.2em]">
+                {link}
+              </a>
+            ))}
           </div>
         </div>
       </div>

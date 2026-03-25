@@ -4,97 +4,101 @@ import { FiMousePointer, FiTruck, FiCheckCircle } from 'react-icons/fi'
 const steps = [
   {
     step: '01',
-    icon: <FiMousePointer className="text-3xl" />,
-    title: 'Book Online',
-    description: 'Fill in our quick booking form with your pickup, delivery, and parcel details.',
-    color: 'from-royal to-electric',
+    icon: <FiMousePointer className="text-2xl" />,
+    title: 'Book Mission',
+    description: 'Configure your parameters in our secure booking interface for an instant strategic quote.',
+    color: 'from-royal via-electric to-blue-400',
   },
   {
     step: '02',
-    icon: <FiTruck className="text-3xl" />,
-    title: 'We Collect',
-    description: 'Our driver arrives at your door to collect and securely handle your items.',
-    color: 'from-electric to-blue-400',
+    icon: <FiTruck className="text-2xl" />,
+    title: 'Rapid Collection',
+    description: 'Our fleet activates within 60 minutes. GPS-tracked recovery and secure handling guaranteed.',
+    color: 'from-electric via-blue-400 to-blue-300',
   },
   {
     step: '03',
-    icon: <FiCheckCircle className="text-3xl" />,
-    title: 'Delivered & Tracked',
-    description: 'Your parcel is delivered safely. Track every step with real-time GPS updates.',
-    color: 'from-accent to-orange-400',
+    icon: <FiCheckCircle className="text-2xl" />,
+    title: 'Final Delivery',
+    description: 'Precision drop-off with real-time verification and automated Proof of Delivery (POD).',
+    color: 'from-accent via-orange-500 to-orange-400',
   },
 ]
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="section-padding bg-gradient-to-b from-gray-50 to-white relative overflow-visible w-full">
-      <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric/10 to-transparent" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="how-it-works" className="py-6 sm:py-10 bg-white relative overflow-hidden w-full">
+      {/* Background Decor */}
+      <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric/20 to-transparent" />
+      
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16 sm:mb-20"
+          className="text-center mb-8 sm:mb-10"
         >
-          <span className="inline-block px-4 py-1.5 bg-electric/10 text-electric rounded-full text-xs sm:text-sm font-semibold mb-3 sm:mb-4 tracking-wide uppercase">
-            How It Works
+          <span className="inline-block px-3 py-1 bg-royal/5 text-royal rounded-full text-[9px] font-black mb-4 tracking-[0.3em] uppercase">
+            Protocol
           </span>
-          <h2 className="font-heading font-black text-3xl sm:text-5xl text-navy mb-4 sm:mb-6 tracking-tight">
+          <h2 className="font-heading font-black text-2xl sm:text-3xl lg:text-4xl text-navy mb-4 tracking-tighter">
             Three Simple{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal to-electric">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-royal via-electric to-blue-400">
               Steps
             </span>
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto text-base sm:text-lg font-medium">
-            Getting your parcel delivered is as easy as 1-2-3
+          <p className="text-gray-500 max-w-sm mx-auto text-xs sm:text-sm font-medium">
+            Our process is engineered for the highest standard of corporate reliability.
           </p>
         </motion.div>
 
-        {/* Steps - Horizontal/Vertical Stepper */}
-        <div className="relative overflow-visible w-full">
-          {/* Connector Line (desktop) */}
-          <div className="hidden lg:block absolute top-[40px] left-[15%] right-[15%] h-0.5">
-            <div className="w-full h-0.5 border-t-2 border-dashed border-gray-200" />
+        {/* Steps Grid */}
+        <div className="relative">
+          {/* Connector Line (Desktop) */}
+          <div className="hidden lg:block absolute top-[44px] left-[10%] right-[10%] h-[1px]">
+            <div className="w-full h-full border-t border-dashed border-gray-200" />
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.5, delay: 0.3 }}
-              className="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-royal via-electric to-accent origin-left"
+              transition={{ duration: 1.5 }}
+              className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-royal via-electric to-accent origin-left"
             />
           </div>
 
-          {/* Connector Line (mobile - vertical) */}
-          <div className="lg:hidden absolute top-[10%] bottom-[10%] left-[50%] -translate-x-[50%] w-0.5 border-l-2 border-dashed border-gray-200 hidden sm:block" />
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 sm:gap-16 lg:gap-8 px-4 sm:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
             {steps.map((step, i) => (
               <motion.div
                 key={step.title}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.2 }}
-                className="relative text-center group bg-white lg:bg-transparent rounded-3xl p-6 lg:p-0 shadow-lg lg:shadow-none border border-gray-100 lg:border-none"
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className="relative text-center group"
               >
-                {/* Step Number Circle */}
-                <div className="relative mx-auto mb-6 sm:mb-8 w-max">
-                  <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white shadow-xl group-hover:scale-110 group-hover:shadow-2xl transition-all duration-300`}>
+                {/* Step Icon & Number */}
+                <div className="relative mx-auto mb-10 w-max">
+                  <div className={`w-20 h-20 sm:w-24 sm:h-24 rounded-3xl bg-gradient-to-br ${step.color} flex items-center justify-center text-white shadow-2xl shadow-blue-500/10 group-hover:scale-110 group-hover:shadow-blue-500/20 transition-smooth rotate-3 group-hover:rotate-0`}>
                     {step.icon}
                   </div>
-                  <div className="absolute top-[-8px] right-[-8px] sm:top-[-12px] sm:left-[-12px] sm:right-auto w-8 h-8 rounded-full bg-white shadow-lg flex items-center justify-center border-2 border-accent z-20">
-                    <span className="text-accent font-heading font-black text-xs">{step.step}</span>
+                  <div className="absolute -top-3 -right-3 w-10 h-10 rounded-2xl bg-white shadow-xl flex items-center justify-center border border-gray-100 z-20 group-hover:-translate-y-1 transition-transform">
+                    <span className="text-navy font-black text-xs uppercase tracking-tighter">{step.step}</span>
                   </div>
                 </div>
 
                 {/* Content */}
-                <h3 className="font-heading font-black text-lg sm:text-xl text-navy mb-3 tracking-tight">{step.title}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed max-w-xs mx-auto font-medium">
+                <h3 className="font-heading font-black text-xl text-navy mb-4 tracking-tight group-hover:text-royal transition-colors">{step.title}</h3>
+                <p className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-xs mx-auto font-medium group-hover:text-gray-700 transition-colors">
                   {step.description}
                 </p>
+
+                {/* Mobile/Tablet Arrow Indicator */}
+                {i < 2 && (
+                  <div className="lg:hidden mt-8 text-royal/20 flex justify-center">
+                    <div className="w-px h-12 bg-gradient-to-b from-royal/20 to-transparent" />
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>
