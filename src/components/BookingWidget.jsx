@@ -21,6 +21,56 @@ export default function BookingWidget() {
   const [submitted, setSubmitted] = useState(false)
   const [isSending, setIsSending] = useState(false)
 
+  const createBookingMeta = () => {
+    const dateStr = new Date().toISOString().slice(2, 10).replace(/-/g, '')
+    const randomId = Math.floor(Math.random() * 999).toString().padStart(3, '0')
+    const bookingRef = `BKG-${dateStr}-${randomId}`
+    const now = new Date()
+    const datePart = new Intl.DateTimeFormat('en-GB', {
+      day: '2-digit',
+      month: 'long',
+      year: 'numeric',
+    }).format(now)
+    const timePart = new Intl.DateTimeFormat('en-GB', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    }).format(now).toLowerCase()
+    const submittedDate = `${datePart} at ${timePart}`
+
+    return { bookingRef, submittedDate }
+  }
+
+  const buildWhatsAppMessage = (bookingRef, submittedDate) => {
+    return [
+      '*Infinite Metric Limited - New Booking Enquiry*',
+      '',
+      `*Booking Reference:* ${bookingRef}`,
+      `*Submitted:* ${submittedDate}`,
+      '',
+      '*1) Customer Details*',
+      `- Phone: ${form.phone || 'N/A'}`,
+      `- Email: ${form.email || 'N/A'}`,
+      '',
+      '*2) Collection Details*',
+      `- Address: ${form.pickupAddress || 'N/A'}`,
+      `- Postcode: ${form.pickupPostcode || 'N/A'}`,
+      `- Date: ${form.pickupDate || 'N/A'}`,
+      '',
+      '*3) Delivery Details*',
+      `- Address: ${form.deliveryAddress || 'N/A'}`,
+      `- Postcode: ${form.deliveryPostcode || 'N/A'}`,
+      `- Distance: ${form.distanceMiles ? `${form.distanceMiles} Miles` : 'N/A'}`,
+      '',
+      '*4) Shipment Information*',
+      `- Parcel Size: ${form.parcelSize || 'N/A'}`,
+      `- Service Type: ${form.serviceType || 'N/A'}`,
+      '',
+      '*Additional Notes*',
+      form.message || 'N/A',
+    ].join('\n')
+  }
+
   const validate = () => {
     const newErrors = {}
     if (!form.pickupAddress.trim()) newErrors.pickupAddress = 'Required'
@@ -40,18 +90,7 @@ export default function BookingWidget() {
     
     setIsSending(true)
     try {
-      // Generate Reference
-      const dateStr = new Date().toISOString().slice(2, 10).replace(/-/g, '')
-      const randomId = Math.floor(Math.random() * 999).toString().padStart(3, '0')
-      const bookingRef = `BKG-${dateStr}-${randomId}`
-      const submittedDate = new Date().toLocaleString('en-GB', { 
-        day: '2-digit', 
-        month: 'long', 
-        year: 'numeric', 
-        hour: '2-digit', 
-        minute: '2-digit',
-        hour12: true
-      })
+      const { bookingRef, submittedDate } = createBookingMeta()
 
       const senderEmail = import.meta.env.VITE_SENDER_EMAIL || 'noreply@infinitemetric.co.uk'
       const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'Srujan.konda@infinitemetric.co.uk'
@@ -63,7 +102,7 @@ export default function BookingWidget() {
         htmlContent: `
             <div style="background-color: #fcfcfc; padding: 40px 20px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #000000;">
               <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border: 1px solid #000000; padding: 40px;">
-                <h1 style="font-size: 18px; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 30px; text-transform: uppercase;">Infinite Metric Dispatch</h1>
+                <h1 style="font-size: 18px; font-weight: 900; letter-spacing: -0.02em; margin-bottom: 30px; text-transform: uppercase;">Infinite Metric Limited</h1>
                 
                 <p style="font-size: 14px; margin-bottom: 25px; line-height: 1.5;">A new booking enquiry has been submitted via the website. Please find the details below.</p>
                 
@@ -144,7 +183,7 @@ export default function BookingWidget() {
           parcelSize: '', serviceType: 'same-day', phone: '', email: '', message: '' 
         })
       } else {
-        handleWhatsAppRedirect()
+        handleWhatsAppRedirect(bookingRef, submittedDate)
       }
     } catch (err) {
       handleWhatsAppRedirect()
@@ -153,14 +192,9 @@ export default function BookingWidget() {
     }
   }
 
-  const handleWhatsAppRedirect = () => {
-    const text = [
-      'New Booking Request:',
-      `- Pickup: ${form.pickupAddress || 'N/A'}, ${form.pickupPostcode || 'N/A'}`,
-      `- Date: ${form.pickupDate || 'N/A'}`,
-      `- Delivery: ${form.deliveryAddress || 'N/A'}, ${form.deliveryPostcode || 'N/A'}`,
-      `- Size: ${form.parcelSize || 'N/A'}`,
-    ].join('\n')
+  const handleWhatsAppRedirect = (bookingRef, submittedDate) => {
+    const meta = bookingRef && submittedDate ? { bookingRef, submittedDate } : createBookingMeta()
+    const text = buildWhatsAppMessage(meta.bookingRef, meta.submittedDate)
     window.open(`https://wa.me/447896656811?text=${encodeURIComponent(text)}`, '_blank')
   }
 
@@ -379,20 +413,7 @@ export default function BookingWidget() {
                   href="#"
                   onClick={(e) => {
                     e.preventDefault()
-                    const msg = [
-                      `📦 *New Delivery Quote Request*`,
-                      ``,
-                      `*Pickup:* ${form.pickupAddress || 'N/A'}, ${form.pickupPostcode || 'N/A'}`,
-                      `*Delivery:* ${form.deliveryAddress || 'N/A'}, ${form.deliveryPostcode || 'N/A'}`,
-                      `*Date:* ${form.pickupDate || 'N/A'}`,
-                      `*Distance:* ${form.distanceMiles ? form.distanceMiles + ' miles' : 'N/A'}`,
-                      `*Parcel Size:* ${form.parcelSize || 'N/A'}`,
-                      `*Service:* ${form.serviceType || 'N/A'}`,
-                      `*Phone:* ${form.phone || 'N/A'}`,
-                      `*Email:* ${form.email || 'N/A'}`,
-                      form.message ? `*Notes:* ${form.message}` : '',
-                    ].filter(Boolean).join('\n')
-                    window.open(`https://wa.me/447896656811?text=${encodeURIComponent(msg)}`, '_blank')
+                    handleWhatsAppRedirect()
                   }}
                   className="w-full sm:w-auto h-14 px-8 bg-accent text-white rounded-2xl font-bold uppercase tracking-[0.1em] text-sm hover:bg-black active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 whitespace-nowrap"
                   style={{ color: '#FFFFFF' }}
