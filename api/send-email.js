@@ -26,11 +26,12 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method Not Allowed' })
   }
 
-  const apiKey = process.env.VITE_BREVO_API_KEY
-  const senderEmail = process.env.VITE_SENDER_EMAIL || 'noreply@infinitemetriclogistics.co.uk'
-  const contactEmail = process.env.VITE_CONTACT_EMAIL || 'Srujan.konda@infinitemetriclogistics.co.uk'
+  const apiKey = process.env.BREVO_API_KEY || process.env.VITE_BREVO_API_KEY
+  const senderEmail = process.env.SENDER_EMAIL || process.env.VITE_SENDER_EMAIL || 'noreply@infinitemetric.co.uk'
+  const contactEmail = process.env.CONTACT_EMAIL || process.env.VITE_CONTACT_EMAIL || 'Srujan.konda@infinitemetric.co.uk'
 
   if (!apiKey) {
+    console.error('Missing API Key. Check BREVO_API_KEY environment variable.')
     return res.status(500).json({ error: 'Server environment misconfigured: API Key missing' })
   }
 
