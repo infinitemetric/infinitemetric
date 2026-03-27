@@ -80,7 +80,7 @@ export default function Footer() {
               </div>
               <div>
                 <span style={{ color: 'rgba(255,255,255,0.4)' }} className="text-[10px] font-bold uppercase tracking-[0.15em] block mb-1.5">Email</span>
-                <a href="mailto:srujan.konda@infinitemetric.co.uk" style={{ color: '#FFFFFF' }} className="hover:text-accent text-sm font-semibold transition-colors break-all">srujan.konda@infinitemetric.co.uk</a>
+                <a href="mailto:srujan.konda@infinitemetriclogistics.co.uk" style={{ color: '#FFFFFF' }} className="hover:text-accent text-sm font-semibold transition-colors break-all">srujan.konda@infinitemetriclogistics.co.uk</a>
               </div>
               <div>
                 <span style={{ color: 'rgba(255,255,255,0.4)' }} className="text-[10px] font-bold uppercase tracking-[0.15em] block mb-1.5">Office</span>

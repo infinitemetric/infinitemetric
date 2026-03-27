@@ -78,8 +78,16 @@ export default function BookingWidget() {
     if (!form.deliveryAddress.trim()) newErrors.deliveryAddress = 'Required'
     if (!form.deliveryPostcode.trim()) newErrors.deliveryPostcode = 'Required'
     if (!form.parcelSize) newErrors.parcelSize = 'Select'
-    if (!form.phone.trim()) newErrors.phone = 'Required'
-    if (!form.email.trim()) newErrors.email = 'Required'
+    if (!form.phone.trim()) {
+      newErrors.phone = 'Required'
+    } else if (!/^\+?[\d\s-]{10,}$/.test(form.phone)) {
+      newErrors.phone = 'Invalid phone'
+    }
+    if (!form.email.trim()) {
+      newErrors.email = 'Required'
+    } else if (!/\S+@\S+\.\S+/.test(form.email)) {
+      newErrors.email = 'Invalid email'
+    }
     setErrors(newErrors)
     return Object.keys(newErrors).length === 0
   }
@@ -92,8 +100,8 @@ export default function BookingWidget() {
     try {
       const { bookingRef, submittedDate } = createBookingMeta()
 
-      const senderEmail = import.meta.env.VITE_SENDER_EMAIL || 'noreply@infinitemetric.co.uk'
-      const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'Srujan.konda@infinitemetric.co.uk'
+      const senderEmail = import.meta.env.VITE_SENDER_EMAIL || 'noreply@infinitemetriclogistics.co.uk'
+      const contactEmail = import.meta.env.VITE_CONTACT_EMAIL || 'Srujan.konda@infinitemetriclogistics.co.uk'
       
       const emailPayload = {
         sender: { name: 'Infinite Metric Website', email: senderEmail },
@@ -251,8 +259,8 @@ export default function BookingWidget() {
                       <FiMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-accent text-lg z-10" />
                       <input
                         type="text"
-                        placeholder="Pickup Street Address"
-                        className={`w-full h-12 pl-12 pr-4 bg-[#F4F3F1] border border-[#E0DEDB] rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.pickupAddress ? 'border-red-500' : ''}`}
+                        placeholder="Pickup Street Address *"
+                        className={`w-full h-12 pl-12 pr-4 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.pickupAddress ? 'border-red-500 bg-red-50/20' : ''}`}
                         value={form.pickupAddress}
                         onChange={(e) => handleChange('pickupAddress', e.target.value)}
                       />
@@ -261,8 +269,8 @@ export default function BookingWidget() {
                       <FiMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-accent text-lg z-10" />
                       <input
                         type="text"
-                        placeholder="Pickup Postcode"
-                        className={`w-full h-12 pl-12 pr-4 bg-[#F4F3F1] border border-[#E0DEDB] rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.pickupPostcode ? 'border-red-500' : ''}`}
+                        placeholder="Pickup Postcode *"
+                        className={`w-full h-12 pl-12 pr-4 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.pickupPostcode ? 'border-red-500 bg-red-50/20' : ''}`}
                         value={form.pickupPostcode}
                         onChange={(e) => handleChange('pickupPostcode', e.target.value)}
                       />
@@ -274,8 +282,8 @@ export default function BookingWidget() {
                       <FiMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-accent text-lg z-10" />
                       <input
                         type="text"
-                        placeholder="Delivery Street Address"
-                        className={`w-full h-12 pl-12 pr-4 bg-[#F4F3F1] border border-[#E0DEDB] rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.deliveryAddress ? 'border-red-500' : ''}`}
+                        placeholder="Delivery Street Address *"
+                        className={`w-full h-12 pl-12 pr-4 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.deliveryAddress ? 'border-red-500 bg-red-50/20' : ''}`}
                         value={form.deliveryAddress}
                         onChange={(e) => handleChange('deliveryAddress', e.target.value)}
                       />
@@ -284,8 +292,8 @@ export default function BookingWidget() {
                       <FiMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-accent text-lg z-10" />
                       <input
                         type="text"
-                        placeholder="Delivery Postcode"
-                        className={`w-full h-12 pl-12 pr-4 bg-[#F4F3F1] border border-[#E0DEDB] rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.deliveryPostcode ? 'border-red-500' : ''}`}
+                        placeholder="Delivery Postcode *"
+                        className={`w-full h-12 pl-12 pr-4 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.deliveryPostcode ? 'border-red-500 bg-red-50/20' : ''}`}
                         value={form.deliveryPostcode}
                         onChange={(e) => handleChange('deliveryPostcode', e.target.value)}
                       />
@@ -297,7 +305,7 @@ export default function BookingWidget() {
                       <FiCalendar className="absolute left-4 top-1/2 -translate-y-1/2 text-accent text-lg z-10" />
                       <input
                         type="date"
-                        className={`w-full h-12 pl-12 pr-4 bg-[#F4F3F1] border border-[#E0DEDB] rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.pickupDate ? 'border-red-500' : ''}`}
+                        className={`w-full h-12 pl-12 pr-4 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.pickupDate ? 'border-red-500 bg-red-50/20' : ''}`}
                         value={form.pickupDate}
                         onChange={(e) => handleChange('pickupDate', e.target.value)}
                       />
@@ -306,8 +314,8 @@ export default function BookingWidget() {
                       <FiNavigation className="absolute left-4 top-1/2 -translate-y-1/2 text-accent text-lg z-10" />
                       <input
                         type="text"
-                        placeholder="Distance in Miles"
-                        className="w-full h-12 pl-12 pr-4 bg-[#F4F3F1] border border-[#E0DEDB] rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none"
+                        placeholder="Distance in Miles (Optional)"
+                        className="w-full h-12 pl-12 pr-4 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none"
                         value={form.distanceMiles}
                         onChange={(e) => handleChange('distanceMiles', e.target.value)}
                       />
@@ -328,11 +336,11 @@ export default function BookingWidget() {
                     <div className="relative group">
                       <FiPackage className="absolute left-4 top-1/2 -translate-y-1/2 text-accent text-lg z-10" />
                       <select
-                        className={`w-full h-12 pl-12 pr-6 bg-[#F4F3F1] border border-[#E0DEDB] rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none appearance-none cursor-pointer ${errors.parcelSize ? 'border-red-500' : ''}`}
+                        className={`w-full h-12 pl-12 pr-6 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none appearance-none cursor-pointer ${errors.parcelSize ? 'border-red-500 bg-red-50/20' : ''}`}
                         value={form.parcelSize}
                         onChange={(e) => handleChange('parcelSize', e.target.value)}
                       >
-                        <option value="">Choose Parcel Size</option>
+                        <option value="">Choose Parcel Size *</option>
                         <option value="small">Small</option>
                         <option value="medium">Medium</option>
                         <option value="large">Large</option>
@@ -342,11 +350,11 @@ export default function BookingWidget() {
                     <div className="relative group">
                       <FiShield className="absolute left-4 top-1/2 -translate-y-1/2 text-accent text-lg z-10" />
                       <select
-                        className={`w-full h-12 pl-12 pr-6 bg-[#F4F3F1] border border-[#E0DEDB] rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none appearance-none cursor-pointer ${errors.serviceType ? 'border-red-500' : ''}`}
+                        className={`w-full h-12 pl-12 pr-6 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none appearance-none cursor-pointer ${errors.serviceType ? 'border-red-500 bg-red-50/20' : ''}`}
                         value={form.serviceType}
                         onChange={(e) => handleChange('serviceType', e.target.value)}
                       >
-                        <option value="">Select Service Type</option>
+                        <option value="">Select Service Type *</option>
                         <option value="express">Same-Day Express</option>
                         <option value="standard">Standard Next-Day</option>
                         <option value="economy">Economy 48-Hour</option>
@@ -359,8 +367,8 @@ export default function BookingWidget() {
                       <FiPhone className="absolute left-4 top-1/2 -translate-y-1/2 text-accent text-lg z-10" />
                       <input
                         type="tel"
-                        placeholder="Your Contact Number"
-                        className={`w-full h-12 pl-12 pr-4 bg-[#F4F3F1] border border-[#E0DEDB] rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.phone ? 'border-red-500' : ''}`}
+                        placeholder="Contact Number *"
+                        className={`w-full h-12 pl-12 pr-4 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.phone ? 'border-red-500 bg-red-50/20' : ''}`}
                         value={form.phone}
                         onChange={(e) => handleChange('phone', e.target.value)}
                       />
@@ -369,8 +377,8 @@ export default function BookingWidget() {
                       <FiMail className="absolute left-4 top-1/2 -translate-y-1/2 text-accent text-lg z-10" />
                       <input
                         type="email"
-                        placeholder="Business Email Address"
-                        className={`w-full h-12 pl-12 pr-4 bg-[#F4F3F1] border border-[#E0DEDB] rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.email ? 'border-red-500' : ''}`}
+                        placeholder="Email Address *"
+                        className={`w-full h-12 pl-12 pr-4 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.email ? 'border-red-500 bg-red-50/20' : ''}`}
                         value={form.email}
                         onChange={(e) => handleChange('email', e.target.value)}
                       />
@@ -380,8 +388,8 @@ export default function BookingWidget() {
                   <div className="relative group">
                     <FiMessageSquare className="absolute left-4 top-6 text-accent text-lg z-10" />
                     <textarea
-                      placeholder="Any special handling notes or cargo info?"
-                      className="w-full h-24 pl-12 pr-4 py-4 bg-[#F4F3F1] border border-[#E0DEDB] rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none resize-none"
+                      placeholder="Additional notes or cargo info (Optional)"
+                      className="w-full h-24 pl-12 pr-4 py-4 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none resize-none"
                       value={form.message}
                       onChange={(e) => handleChange('message', e.target.value)}
                     ></textarea>

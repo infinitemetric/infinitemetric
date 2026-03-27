@@ -4,6 +4,8 @@ export default async function handler(req, res) {
     'https://infinitemetric.vercel.app',
     'https://infinitemetric.co.uk',
     'https://www.infinitemetric.co.uk',
+    'https://infinitemetriclogistics.co.uk',
+    'https://www.infinitemetriclogistics.co.uk',
     'http://localhost:5173',
     'http://localhost:3000'
   ]
@@ -25,8 +27,8 @@ export default async function handler(req, res) {
   }
 
   const apiKey = process.env.VITE_BREVO_API_KEY
-  const senderEmail = process.env.VITE_SENDER_EMAIL || 'noreply@infinitemetric.co.uk'
-  const contactEmail = process.env.VITE_CONTACT_EMAIL || 'Srujan.konda@infinitemetric.co.uk'
+  const senderEmail = process.env.VITE_SENDER_EMAIL || 'noreply@infinitemetriclogistics.co.uk'
+  const contactEmail = process.env.VITE_CONTACT_EMAIL || 'Srujan.konda@infinitemetriclogistics.co.uk'
 
   if (!apiKey) {
     return res.status(500).json({ error: 'Server environment misconfigured: API Key missing' })
