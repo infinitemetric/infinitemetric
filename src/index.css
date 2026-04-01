@@ -111,10 +111,6 @@ input:-webkit-autofill:active {
 .card-hover {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.card-hover:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-}
 
 /* === SMOOTH TRANSITIONS === */
 .transition-smooth {

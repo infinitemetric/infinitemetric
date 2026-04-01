@@ -355,8 +355,8 @@ export default function BookingWidget() {
                         value={form.parcelSize}
                         onChange={(e) => handleChange('parcelSize', e.target.value)}
                       >
-                        <option value="">Choose Parcel Size *</option>
-                        <option value="small">Small</option>
+                                              className={`booking-date-input w-full h-12 pl-12 pr-4 premium-input rounded-[10px] text-text-primary text-sm font-medium focus:border-accent transition-all outline-none ${errors.pickupDate ? 'border-red-500 bg-red-50/20' : ''}`}
+                                              value={form.pickupDate || ''}
                         <option value="medium">Medium</option>
                         <option value="large">Large</option>
                         <option value="pallet">Pallet Size</option>
