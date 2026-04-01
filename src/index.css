@@ -95,16 +95,6 @@ input:-webkit-autofill:active {
   border-color: var(--color-accent) !important;
 }
 
-.booking-date-input {
-  color-scheme: light;
-  -webkit-appearance: auto;
-  appearance: auto;
-}
-
-.booking-date-input::-webkit-calendar-picker-indicator {
-  cursor: pointer;
-}
-
 /* === SUBTLE CARD HOVER === */
 .card-hover {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
